@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Internet and Social Media</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Times New Roman";
+  background: #3b4a6b; 
+  color: white;
+ background-image: url('images/am.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-color: #0b1d3d;
+            color: white;
+            margin: 0;
+            font-family: Times New Roman;
+        }
+
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+/* Rotating Globe */
+.globe {
+  font-size: 60px;
+  display: inline-block;
+  animation: spin 12s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+header h1 {
+  font-size: 50px;
+  margin: 10px 0;
+}
+header h3 {
+  font-size: 20px;
+  color: #3a00cc;
+}
+
+/* NAVIGATION */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+nav div {
+  padding: 22px;
+  width: 220px;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  transition: 0.3s;
+}
+
+/* Navigation colors */
+nav div:nth-child(1) { background: #ff6b6b; }
+nav div:nth-child(2) { background: #4ecdc4; }
+nav div:nth-child(3) { background: #ffa502; }
+nav div:nth-child(4) { background: #1e90ff; }
+nav div:nth-child(5) { background: #2ed573; }
+nav div:nth-child(6) { background: #e84393; }
+nav div:nth-child(7) { background: #ff9f43; }
+nav div:hover { transform: scale(1.08); }
+
+/* PAGES */
+section {
+  display: none;
+  padding: 30px;
+}
+.active { display: block; }
+
+.pageTitle {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.back {
+  background: white;
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+/* COMBINED CONTENT AREA */
+.content {
+  background:#FAFAD2; 
+  color: #0f172a;
+  padding: 40px;
+  border-radius: 12px;
+  min-height: 600px;
+  width: 90%;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.7;
+  overflow: auto;
+}
+
+/* Exception: Keeps the Members section white */
+#members .content {
+  background: white !important;
+  border: 1px solid #ddd;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 15px 0;
+  display: block;
+  border: 2px solid #94a3b8;
+}
+
+.content h2, .content h3 { 
+  color: #1e1b4b; 
+  border-bottom: 2px solid #1e1b4b;
+  padding-bottom: 5px;
+  margin-top: 30px;
+}
+
+.content ul { 
+  margin-left: 20px; 
+}
+
+
+/* ADD THIS NEW CSS BELOW */
+.members-container{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.member-box{
+width:150px;
+height:180px;
+border-radius:12px;
+padding:10px;
+text-align:center;
+color:white;
+}
+
+.member-box img{
+width:80px;
+height:80px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:8px;
+}
+
+.member-box h3{
+margin:5px 0;
+font-size:16px;
+}
+
+</style>
+
+<script>
+function showPage(id) {
+  let pages = document.querySelectorAll("section");
+  pages.forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function previewImage(input) {
+  const file = input.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = input.parentElement.querySelector('.preview');
+      img.src = e.target.result;
+      img.style.display = 'block';
+      input.remove(); // remove file input once image is loaded
+    }
+    reader.readAsDataURL(file);
+  }
+}
+</script>
+
+</head>
+<body>
+
+<header>
+  <div class="globe">🌍</div>
+  <h1>Internet and Social Media</h1>
+  <h3>Computer Presentation</h3>
+</header>
+
+<!-- HOME PAGE -->
+<section id="home" class="active">
+  <nav>
+    <div onclick="showPage('intro')">Introduction</div>
+    <div onclick="showPage('remote')">Remote Login</div>
+    <div onclick="showPage('protocols')">Protocols & Emails</div>
+    <div onclick="showPage('social')">Social Media</div>
+    <div onclick="showPage('zoom')">Zoom & Blogs</div>
+    <div onclick="showPage('contents')">Table of Contents</div>
+    <div onclick="showPage('members')">Members</div>
+  </nav>
+</section>
+
+<!-- INTRODUCTION -->
+<section id="intro">
+  <button class="back" onclick="showPage('home')">⬅ Back</button>
+  <h2 class="pageTitle">Introduction</h2>
+  <div class="content">
+    <h2>WWW(World Wide Web)</h2>
+    <p>The World Wide Web (WWW) is a system of interlinked web pages that people can access through the Internet. It was invented by Tim Berners-Lee in 1989 to help share information easily around the world. The WWW contains many websites that include text, images, videos, and links. People use web browsers such as Google Chrome and Mozilla Firefox to open and view web pages. Each website has its own unique address called a URL. The World Wide Web has become an important tool for communication, education, research, and entertainment. Today, millions of people use the WWW every day to find and share information.</p>
+    <img src="images/pu.jpeg" alt="WWW">
+    <img src="images/pml.jpg" >
+    <h3>Uses Of WWW </h3>
+    <ul>
+      <li>Search information on the internet</li>         
+      <li>Communicate with people around the world</li>
+      <li>Learn and study online</li>
+      <li>Shop and do business online</li>
+    </ul>
+    <h2>Browser</h2>
+    <p>A web browser is a software used to access and view websites on the internet. It helps users search for information on the World Wide Web. With a browser, people can read articles, watch videos, and download files. It also allows users to open different web pages by typing a website address. Some common browsers are Google Chrome, Mozilla Firefox, and Microsoft Edge. Browsers make using the internet easy and fast.</p>
+    <img src="images/pl.png">
+    <h2> Key features of browser </h2> 
+    <ul> 
+      <li>Bookmarks: Save important websites so you can visit them quickly later </li>
+      <li>Tabs: Open and view multiple web pages in one browser window </li>
+      <li>Extensions: Add extra tools or features to improve the browser</li>
+      <li>Private Browsing: Browse the internet without saving history or cookies  </li>
+      <li>Synchronization: Sync bookmarks, history, and settings across different devices </li>
+    </ul>
+    <h2> Search Engine </h2>
+    <p> A search engine is a program that helps users find information on the internet. It works by searching different websites for the words or questions typed by the user. The search engine then shows a list of related web pages as results. People use search engines to learn, research, and find answers quickly. Popular search engines include Google Search, Bing, and Yahoo! Search. </p>
+    <h3> How to use search engine </h3>
+    <ul>
+      <li>Open a web browser such as Chrome or Firefox.</li>
+      <li>Go to a search engine like Google Search. </li>
+      <li>Type keywords or a question in the search box. </li>
+      <li>Press Enter and click a result to get the needed information.</li>
+    </ul>
+    <h2> URL(Uniform Resource Locator) </h2>
+    <ul>
+      <li>URL stands for Uniform Resource Locator.</li>
+      <li> It is the address of a website on the internet.</li>
+      <li>A URL tells the browser where to find a web page. </li>
+      <li>URLs usually start with http:// or https:// for secure sites. </li>
+    </ul>
+  </div>
+</section>
+
+<!-- REMOTE LOGIN -->
+<section id="remote">
+  <button class="back" onclick="showPage('home')">⬅ Back</button>
+  <h2 class="pageTitle">Remote Login</h2>
+  <div class="content">
+  
+<h2>Introduction to Remote Login</h2>
+<p>Remote login allows you to access and control another computer from a different place using the internet. It helps people work without being physically present at the computer.</p>
+
+<h3>Advantages of Remote Login</h3>
+<ul>
+    <li><strong>Flexibility:</strong> You can work from anywhere.</li>
+    <li><strong>Shared Resources:</strong> Files and programs can be used by many people.</li>
+    <li><strong>Greater Efficiency and Collaboration:</strong> Teams can work together easily and faster.</li>
+    <li><strong>Cost Saving:</strong> Less need for extra computers and travel costs.</li>
+</ul>
+
+<h3>Disadvantages of Remote Login</h3>
+<ul>
+    <li><strong>Security Risks:</strong> Hackers can access data if not secure.</li>
+    <li><strong>Hardware Issues:</strong> Computers must be compatible and working well.</li>
+    <li><strong>Complex Software:</strong> Some programs are hard to set up and use.</li>
+</ul>
+
+<h3>Working Process of Remote Login</h3>
+<ul>
+    <li>Install remote login software on both computers.</li>
+    <li>Login using username, password, or security key.</li>
+    <li>Control the remote computer from your own computer.</li>
+    <li>Data and commands are sent over the internet safely.</li>
+</ul>
+
+<h2>AnyDesk</h2>
+<p>AnyDesk is software used to control a computer remotely. It is fast and easy to use for work or support.</p>
+<img src="images/m5.jpeg">
+
+<h3>How to Use AnyDesk</h3>
+<ul>
+    <li>Install AnyDesk on both computers.</li>
+    <li>Open AnyDesk and get the remote computer address.</li>
+    <li>Enter this address on your computer and click Connect.</li>
+    <li>The remote computer must accept the connection.</li>
+    <li>After that, you can control the remote computer.</li>
+</ul>
+
+<h2>TeamViewer</h2>
+<p>TeamViewer is another remote control software. It allows users to access and work on another computer from anywhere. It is safe and helps in sharing files and solving problems remotely.</p>
+
+<h3>How to Use TeamViewer</h3>
+<ul>
+    <li>Install TeamViewer on both computers.</li>
+    <li>Open TeamViewer and note the remote computer ID and password.</li>
+    <li>Enter the remote ID on your computer and click Connect.</li>
+    <li>Enter the password to access the remote computer.</li>
+    <li>Now you can control or share files with the remote computer.</li>
+</ul>
+  </div>
+</section>
+
+<!-- PROTOCOLS -->
+<section id="protocols">
+  <button class="back" onclick="showPage('home')">⬅ Back</button>
+  <h2 class="pageTitle">Protocols & Emails</h2>
+  <div class="content">
+    <h2>Protocol</h2>
+    <p>Protocols are rules that help computers communicate with each other over the internet. They make sure data is sent and received correctly.</p>
+
+    <h3>HTTP (HyperText Transfer Protocol)</h3>
+    <p>HTTP is the basic way computers communicate on the web. It helps your browser request and receive web pages from servers. However, HTTP does not encrypt the data, so information sent over HTTP can be seen by others.</p>
+    <ul>
+      <li><strong>How HTTP works:</strong>
+        <ul>
+          <li>Your browser sends a request to the website's server.</li>
+          <li>The server sends back the requested web page.</li>
+          <li>This allows you to view websites on the internet.</li>
+        </ul>
+      </li>
+      <li><strong>Advantages of HTTP:</strong>
+        <ul>
+          <li>Simple and widely used.</li>
+          <li>Fast loading of web pages.</li>
+          <li>Works with all web browsers.</li>
+          <li>Easy to understand and implement.</li>
+        </ul>
+      </li>
+      <li><strong>Disadvantages of HTTP:</strong>
+        <ul>
+          <li>Data is not encrypted, so it is not secure.</li>
+          <li>Information can be intercepted by others.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>HTTPS (HyperText Transfer Protocol Secure)</h3>
+    <p>HTTPS is the secure version of HTTP. It encrypts data between your browser and the server, keeping your information safe from hackers. Websites using      HTTPS show a padlock icon in the browser address bar, which means the connection is secure.</p>
+       <ul>
+      <li><strong>How HTTPS works:</strong>
+        <ul>
+          <li>Data sent between browser and server is encrypted.</li>
+          <li>Uses SSL/TLS protocols to keep data secure.</li>
+        </ul>
+      </li>
+      <li><strong>Advantages of HTTPS:</strong>
+        <ul>
+          <li>Protects personal and sensitive information.</li>
+          <li>Prevents data theft and hacking.</li>
+          <li>Builds trust with users (shows a padlock icon).</li>
+          <li>Ensures data integrity during transmission.</li>
+        </ul>
+      </li>
+      <li><strong>Disadvantages of HTTPS:</strong>
+        <ul>
+          <li>Can be slower than HTTP due to encryption.</li>
+          <li>Requires extra resources on the server.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>Email</h2>
+    <p>Email is a way to send messages and files instantly over the internet. It is used for communication in schools, businesses, and personal life.</p>
+
+    <h3>Uses of Email</h3>
+    <ul>
+      <li>Sending messages quickly worldwide.</li>
+      <li>Sharing documents, photos, and videos.</li>
+      <li>Communicating for work, school, and personal matters.</li>
+    </ul>
+
+    <h3>Advantages of Email</h3>
+    <ul>
+      <li>Fast and convenient communication.</li>
+      <li>Can send to many people at once.</li>
+      <li>Messages can be stored and searched easily.</li>
+      <li>Accessible from anywhere with internet.</li>
+      <li>Supports sending files and attachments.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOCIAL MEDIA -->
+<section id="social">
+<button class="back" onclick="showPage('home')">⬅ Back</button>
+<h2 class="pageTitle">Social Media</h2>
+
+
+
+<div class="content">
+
+<h2>Introduction to Social Media</h2>
+<p>
+Social media refers to online platforms where people can create, share, and exchange information, ideas, photos, and videos. 
+It helps people communicate with friends, family, and communities across the world. 
+Popular social media platforms include Facebook, Instagram, Twitter, and YouTube. 
+It allows users to express their opinions and stay updated with current events. 
+When used responsibly, social media can be a powerful tool for communication and learning.
+</p>
+<img src="images/m.jpeg">
+
+<h2>Appropriate Usage of Social Media</h2>
+<ul>
+<li><b>Brand Monitoring:</b> Checking what people say online about a brand or organization.</li>
+<li><b>Influencer Marketing:</b> Promoting products or ideas through popular social media personalities.</li>
+<li><b>Social Listening:</b> Observing online discussions to understand people's opinions and trends.</li>
+<li><b>Performance Analysis:</b> Measuring how well social media posts and campaigns are performing.</li>
+<li><b>Contests and Giveaways:</b> Organizing online competitions or rewards to attract audience engagement.</li>
+<li><b>Localizing Content:</b> Creating content that matches the language and culture of a specific audience.</li>
+</ul>
+
+<h2>Social Media for Educational Purposes</h2>
+<ul>
+<li><b>Online Learning:</b> Students can access educational videos, tutorials, and online classes.</li>
+<li><b>Sharing Knowledge:</b> Teachers and students can share useful information and learning materials.</li>
+<li><b>Group Discussions:</b> Students can discuss assignments and ideas with classmates.</li>
+<li><b>Access to Global Information:</b> Social media provides information from different parts of the world.</li>
+<li><b>Educational Communities:</b> Students can join groups related to their studies and interests.</li>
+<li><b>Improved Communication:</b> Students can easily communicate with teachers and classmates.</li>
+<li><b>Skill Development:</b> Social media helps develop writing, communication, and digital skills.</li>
+<li><b>Awareness Programs:</b> It spreads awareness about educational events, scholarships, and opportunities.</li>
+</ul>
+
+<h2>How to Access Websites Safely</h2>
+<ul>
+<li><b>Use Secure Websites:</b> Always check for "https://" before entering personal information.</li>
+<li><b>Avoid Suspicious Links:</b> Do not click unknown or suspicious links online.</li>
+<li><b>Use Strong Passwords:</b> Create passwords using letters, numbers, and symbols.</li>
+<li><b>Keep Software Updated:</b> Update your browser and antivirus regularly.</li>
+<li><b>Do Not Share Personal Information:</b> Avoid sharing private information on unknown websites.</li>
+<li><b>Use Antivirus Protection:</b> Install antivirus software to protect your device.</li>
+<li><b>Log Out After Use:</b> Always log out when using shared or public computers.</li>
+<li><b>Be Careful with Downloads:</b> Only download files from trusted websites.</li>
+</ul>
+<img src="images/m1.jpeg">
+
+
+<h2>Introduction to Video Conferencing Tools</h2>
+<p>
+Video conferencing tools are online applications that allow people to communicate through video and audio over the internet. 
+They are widely used for online meetings, virtual classes, and business discussions. 
+Popular video conferencing tools include Zoom, Google Meet, and Microsoft Teams. 
+These tools allow people from different locations to interact in real time. 
+They are especially useful for remote learning and communication.
+</p>
+
+<h2>Advantages of Video Conferencing</h2>
+<ul>
+<li><b>Saves Time and Travel:</b> People can attend meetings or classes from anywhere.</li>
+<li><b>Better Communication:</b> Video and audio help participants interact more clearly.</li>
+<li><b>Supports Online Learning:</b> Teachers and students can conduct classes remotely.</li>
+</ul>
+
+
+    </div>
+</section>
+
+<!-- ZOOM & BLOGS -->
+<section id="zoom">
+  <button class="back" onclick="showPage('home')">⬅ Back</button>
+  <h2 class="pageTitle">Zoom & Blogs</h2>
+  <div class="content">
+
+<h2>Zoom: Introduction</h2>
+<p>
+Zoom is a video conferencing application used for online meetings, classes, and discussions. 
+It allows people to communicate with each other through video, audio, and chat using the internet. 
+Students, teachers, and businesses use Zoom to connect with people from different locations. 
+It helps users conduct meetings and share information easily without traveling.
+</p>
+<img src="images/m2.jpeg">
+
+<h2>Features of Zoom</h2>
+<ul>
+<li><b>Video and Audio Meetings:</b> Users can communicate with others through live video and sound.</li>
+<li><b>Screen Sharing:</b> Participants can share their screen to show presentations or documents.</li>
+<li><b>Chat Feature:</b> Users can send messages during the meeting.</li>
+<li><b>Meeting Recording:</b> Meetings can be recorded for later use.</li>
+</ul>
+
+<h2>How to Join a Zoom Meeting</h2>
+<ul>
+<li>Open the Zoom application or Zoom website.</li>
+<li>Click on the “Join Meeting” option.</li>
+<li>Enter the Meeting ID provided by the host.</li>
+<li>Enter your name.</li>
+<li>Click the Join button to enter the meeting.</li>
+</ul>
+
+<h2>How to Create a Zoom Meeting</h2>
+<ul>
+<li>Open the Zoom application and sign in.</li>
+<li>Click on the “New Meeting” option.</li>
+<li>Set the meeting options such as audio and video.</li>
+<li>Share the meeting link or meeting ID with participants.</li>
+<li>Start the meeting and communicate with others.</li>
+</ul>
+
+<h2>Google Meet: Introduction</h2>
+<p>
+Google Meet is an online video conferencing tool developed by Google. 
+It allows people to conduct virtual meetings, online classes, and group discussions. 
+Users can join meetings using a link through their browser or mobile phone. 
+Google Meet is widely used by students, teachers, and organizations for communication.
+</p>
+<img src="images/m3.png">
+
+
+<h2>Features of Google Meet</h2>
+<ul>
+<li><b>High Quality Video:</b> Provides clear and smooth video communication.</li>
+<li><b>Screen Sharing:</b> Users can present their screen during meetings.</li>
+<li><b>Live Captions:</b> Automatically shows captions for spoken words.</li>
+<li><b>Easy Access:</b> Participants can join meetings directly using a link.</li>
+</ul>
+
+<h2>How to Create a Google Meet</h2>
+<ul>
+<li>Open the Google Meet website or application.</li>
+<li>Sign in with your Google account.</li>
+<li>Click on “New Meeting”.</li>
+<li>Choose to start the meeting immediately or schedule it for later.</li>
+<li>Share the meeting link with participants.</li>
+</ul>
+
+<h2>Microsoft Teams: Introduction</h2>
+<p>
+Microsoft Teams is an online collaboration platform developed by Microsoft. 
+It allows people to communicate, conduct meetings, and share files in one place. 
+It is commonly used by schools, businesses, and organizations for teamwork and online communication.
+</p>
+<img src="images/m4.png">
+
+
+<h2>Features of Microsoft Teams</h2>
+<ul>
+<li><b>Team Chat:</b> Users can send messages and communicate instantly.</li>
+<li><b>Video Meetings:</b> Allows users to organize online meetings.</li>
+<li><b>File Sharing:</b> Users can upload and share documents easily.</li>
+<li><b>Integration with Microsoft Apps:</b> Works with Word, Excel, and PowerPoint.</li>
+</ul>
+
+<h2>Concept of Blogs</h2>
+<p>
+A blog is a type of website where people share information, ideas, experiences, or opinions online. 
+Blog posts are usually written in simple language and updated regularly. 
+Blogs can be used for education, news, personal stories, travel experiences, and many other purposes.
+</p>
+
+<h2>Features of Blogs</h2>
+<ul>
+<li><b>Regular Updates:</b> Bloggers can update their content frequently.</li>
+<li><b>Comments Section:</b> Readers can share their opinions through comments.</li>
+<li><b>Easy Publishing:</b> Bloggers can easily publish posts online.</li>
+<li><b>Multimedia Support:</b> Blogs can include images, videos, and links.</li>
+<li><b>Personal Expression:</b> Bloggers can express their thoughts and ideas.</li>
+</ul>
+
+<h2>Types of Blogs</h2>
+<ul>
+<li><b>Personal Blogs:</b> These blogs share personal experiences, thoughts, and daily life stories.</li>
+<li><b>Educational Blogs:</b> These blogs provide learning materials, tutorials, and study information for students.</li>
+<li><b>Business Blogs:</b> These blogs are used by companies to promote their products and services.</li>
+<li><b>Travel Blogs:</b> These blogs share travel experiences, places, and useful travel tips.</li>
+</ul>
+
+</div>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<section id="contents">
+  <button class="back" onclick="showPage('home')">⬅ Back</button>
+  <h2 class="pageTitle">Table of Contents</h2>
+  <div class="content">
+<h2 style="text-align:center;">📑 Table of Contents</h2>
+
+<table border="2" style="width:100%; border-collapse:collapse; text-align:left; font-size:18px;">
+
+<tr style="background:#5f27cd; color:white;">
+<th style="padding:10px;">S.N.</th>
+<th style="padding:10px;">Topic Name</th>
+<th style="padding:10px;">Member to Explain</th>
+</tr>
+
+<tr>
+<td style="padding:10px;">1</td>
+<td contenteditable="true" style="padding:10px;">Introduction </td>
+<td contenteditable="true" style="padding:10px;">Sanjok</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">2</td>
+<td contenteditable="true" style="padding:10px;">Remote Login</td>
+<td contenteditable="true" style="padding:10px;"> Aayush</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">3</td>
+<td contenteditable="true" style="padding:10px;">Protocols & Email</td>
+<td contenteditable="true" style="padding:10px;"> Ankit</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">4</td>
+<td contenteditable="true" style="padding:10px;">Social Media</td>
+<td contenteditable="true" style="padding:10px;"> Bibek</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">5</td>
+<td contenteditable="true" style="padding:10px;">Zoom, Google Meet & MS Teams And Blogs</td>
+<td contenteditable="true" style="padding:10px;"> Pabit</td>
+</tr>
+
+</table>
+
+</div>
+</section>
+
+
+<section id="members">
+<button class="back" onclick="showPage('home')">⬅ Back</button>
+<h2 class="pageTitle">Members</h2>
+
+<div class="members-container">
+
+<div class="member-box" style="background:#ff6b6b;">
+<img src="images/sa.png">
+<h3>Sanjok Silwal (C) </h3>
+</div>
+
+<div class="member-box" style="background:#4ecdc4;">
+<img src="images/aa.png">
+<h3>Aayush Thapa </h3>
+</div>
+
+<div class="member-box" style="background:#ffa502;">
+<img src="images/an.jpeg">
+<h3>Ankit Raj Pathak</h3>
+</div>
+
+<div class="member-box" style="background:#1e90ff;">
+<img src="images/mathhe.png">
+<h3>Bibek Marahatta</h3>
+</div>
+
+<div class="member-box" style="background:#2ed573;">
+<img src="images/pab.png">
+<h3>Pabit Regmi</h3>
+</div>
+
+</div>
+</section>
+</body>
+</html> 
